@@ -1,0 +1,18 @@
+def hitung_volume(jari_jari, phi):
+    return (4/3) * phi * (jari_jari ** 3)
+
+def hitung_luas_permukaan(jari_jari, phi):
+    return 4 * phi * (jari_jari ** 2)
+
+def main():
+    jari_jari = float(input("Masukkan jari-jari bola: "))
+    phi = 3.14
+    
+    volume = hitung_volume(jari_jari, phi)
+    luas_permukaan = hitung_luas_permukaan(jari_jari, phi)
+    
+    print("Volume bola:", volume)
+    print("Luas permukaan bola:", luas_permukaan)
+
+if __name__ == "__main__":
+    main()
