@@ -1,0 +1,60 @@
+program TiketPenerbangan;
+uses crt;
+
+var
+  Tiket, Nama, Umur, Jenis_Kelamin, Kota_Tujuan, Jenis_Kelas: string;
+  harga: Real ;
+  kursi: Integer;
+
+begin
+  clrscr;
+  writeln('=============TIKET PENERBANGAN=============');
+  write('Nama          : ');
+  readln(Nama);
+  write('Umur          : ');
+  readln(Umur);
+  write('Jenis kelamin : ');
+  readln(Jenis_Kelamin);
+  writeln();
+  writeln('Kota tujuan :');
+  writeln('1. Jakarta');
+  writeln('2. Lombok');
+  writeln('3. Yogyakarta');
+  write('Pilih kota tujuan: ');
+  readln(Kota_Tujuan);
+  writeln();
+  writeln('Jenis kelas maskapai:');
+  writeln('1. Ekonomi');
+  writeln('   Harga: 1700000');
+  writeln('2. Bisnis');
+  writeln('   Harga: 3500000');
+  writeln('3. First class');
+  writeln('   Harga: 5500000');
+  write('Pilih jenis kelas: ');
+  readln(Jenis_Kelas);
+  
+  harga := 0;
+  if Jenis_Kelas = 'Ekonomi' then
+    harga := 1700000
+  else if Jenis_Kelas = 'Bisnis' then
+    harga := 3500000
+  else
+    harga := 5500000;
+  
+  write('Jumlah kursi: ');
+  readln(kursi);
+  if kursi > 3 then
+    harga := 0.75*harga;
+  
+  writeln();
+  writeln('=============TIKET PENERBANGAN=============');
+  writeln('Nama          : ', Nama);
+  writeln('Umur          : ', Umur);
+  writeln('Jenis kelamin : ', Jenis_Kelamin);
+  writeln('Kota tujuan   : ', Kota_Tujuan);
+  writeln('Jenis kelas   : ', Jenis_Kelas);
+  writeln('Harga         : ', harga);
+  writeln('Jumlah kursi  : ', kursi);
+  
+  readln;
+end.
