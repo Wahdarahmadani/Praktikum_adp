@@ -1,0 +1,39 @@
+Tiket=str(input("=============TIKET PENERBANGAN============="))
+Nama =str(input('Nama          :'))
+Umur =str(input('Umur          :'))
+Jenis_Kelamin=str(input('jenis kelamin:'))
+print()
+print('Kota tujuan :')
+print('1.Jakarta:')
+print('2.Lombok:')
+print('3.yogyakarta:')
+Kota_Tujuan=str(input('pilih kota tujuan:'))
+print()
+print('jemis kelas maskapai:')
+print('1.Ekonomi :')
+print('Harga : 1700000:')
+print('2.Bisnis :')
+print('Harga : 3500000:')
+print('3.first class :')
+print('Harga:5500000:')
+Jenis_Kelas =str(input('pilih jenis kelas :'))
+print()
+if Jenis_Kelas =='Ekonomi':
+    harga=1700000
+elif Jenis_Kelas =='Bisnis':
+    harga=3500000
+else :
+    harga=5500000
+jumlah_kursi=int(input('jumlah kursi:'))
+total_harga=harga*jumlah_kursi
+if jumlah_kursi>3:
+   total_harga=total_harga*0.75
+print()    
+print('=============TIKET PENERBANGAN=============:')
+print('Nama         :'+Nama)
+print('Umur         :'+Umur)
+print('Jenis kelamin:'+Jenis_Kelamin)
+print('Kota tujuan  :'+Kota_Tujuan)
+print('Jenis Kelas  :'+Jenis_Kelas)
+print('Harga        :'+str(total_harga))
+print('Jumlah Kursi :'+str(jumlah_kursi))
