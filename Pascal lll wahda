@@ -1,0 +1,36 @@
+program AlphabetPyramid;
+uses crt;
+var
+  i, j, k, num: integer;
+  ch: char;
+begin
+  clrscr;
+  writeln('Program Piramida Alphabet');
+  writeln;
+  write('Masukkan jumlah huruf pada Piramida: ');
+  readln(num);
+  writeln;
+
+  for i := 1 to num do
+  begin
+    ch := 'A';
+    for k := 1 to num - i do
+      write(' ');
+    for j := 1 to i do
+    begin
+      write(ch);
+      ch := succ(ch);
+    end;
+    ch := pred(ch);
+    
+    for j := 1 to i - 1 do
+    begin
+      ch := pred(ch);
+      write(ch);
+    end;
+    
+    writeln;
+  end;
+
+  readln;
+end.
