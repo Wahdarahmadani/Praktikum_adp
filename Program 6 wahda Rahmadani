@@ -1,0 +1,43 @@
+def main():
+    
+    n = int(input("Masukkan jumlah barang: "))
+
+    
+    tabel_barang = []
+
+
+    for i in range(n):
+        nama_barang = input(f"Nama barang ke-{i+1}: ")
+        harga = float(input(f"Harga barang {nama_barang}: "))
+        stok = int(input(f"Stok barang {nama_barang}: "))
+        tabel_barang.append([nama_barang, harga, stok])
+
+    
+    print("Tabel Harga dan Stok Barang:")
+    print("{:<20} {:<10} {:<10}".format("Nama Barang", "Harga", "Stok"))
+    for barang in tabel_barang:
+        print("{:<20} {:<10} {:<10}".format(barang[0], barang[1], barang[2]))
+
+    
+    keuntungan_terbesar = float('-inf')
+    keuntungan_terkecil = float('inf')
+    barang_terbesar = ''
+    barang_terkecil = ''
+    total_keuntungan = 0
+    for barang in tabel_barang:
+        keuntungan = barang[1] * barang[2]
+        total_keuntungan += keuntungan
+        if keuntungan > keuntungan_terbesar:
+            keuntungan_terbesar = keuntungan
+            barang_terbesar = barang[0]
+        if keuntungan < keuntungan_terkecil:
+            keuntungan_terkecil = keuntungan
+            barang_terkecil = barang[0]
+
+    
+    print("Nama barang dengan keuntungan terbesar:", barang_terbesar)
+    print("Nama barang dengan keuntungan terkecil:", barang_terkecil)
+    print("Total keuntungan:", total_keuntungan)
+
+if __name__ == "__main__":
+    main()
