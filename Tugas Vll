@@ -1,0 +1,39 @@
+def hitung_kecepatan_akhir(kecepatan_awal, percepatan, waktu):
+    """
+    Menghitung kecepatan akhir dari GLBB.
+    rumus: v = v0 + a * t
+    """
+    return kecepatan_awal + percepatan * waktu
+
+def hitung_jarak(kecepatan_awal, percepatan, waktu):
+    """
+    Menghitung jarak yang ditempuh dalam GLBB.
+    rumus: s = v0 * t + 0.5 * a * t^2
+    """
+    return kecepatan_awal * waktu + 0.5 * percepatan * waktu**2
+
+def main():
+    n = int(input("Masukkan jumlah data input: "))
+    
+    data = []
+    
+    for i in range(n):
+        print(f"\nData input ke-{i+1}:")
+        kecepatan_awal = float(input("Masukkan kecepatan awal (m/s): "))
+        percepatan = float(input("Masukkan percepatan (m/s^2): "))
+        waktu = float(input("Masukkan waktu (s): "))
+        
+        kecepatan_akhir = hitung_kecepatan_akhir(kecepatan_awal, percepatan, waktu)
+        jarak = hitung_jarak(kecepatan_awal, percepatan, waktu)
+        
+        data.append((kecepatan_awal, percepatan, waktu, kecepatan_akhir, jarak))
+    
+    print("\nHasil perhitungan:")
+    print(f"{'Kecepatan Awal (m/s)':>20} {'Percepatan (m/s^2)':>20} {'Waktu (s)':>10} {'Kecepatan Akhir (m/s)':>25} {'Jarak (m)':>15}")
+    print("="*95)
+    
+    for d in data:
+        print(f"{d[0]:>20} {d[1]:>20} {d[2]:>10} {d[3]:>25} {d[4]:>15}")
+
+if __name__ == "__main__":
+    main()
