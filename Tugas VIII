@@ -1,0 +1,88 @@
+import json
+import os
+
+DATA_FILE = 'keuangan.json'
+
+def load_data():
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, 'r') as file:
+            return json.load(file)
+    return {}
+
+def save_data(data):
+    with open(DATA_FILE, 'w') as file:
+        json.dump(data, file, indent=4)
+
+def add_transaction(data):
+    tanggal = input("tanggal (YYYY-MM-DD): ")
+    keterangan = input("keterangan: ")
+    jumlah = float(input("jumlah: "))
+    tipe = input("tipe (pemasukan/pengeluaran): ").lower()
+
+    if tanggal in data:
+        data[tanggal].append({"keterangan": keterangan, "jumlah": jumlah, "tipe": tipe})
+    else:
+        data[tanggal] = [{"keterangan": keterangan, "jumlah": jumlah, "tipe": tipe}]
+
+    save_data(data)
+    print("Transaksi berhasil ditambahkan!")
+
+def delete_transaction(data):
+    tanggal = input("tanggal (YYYY-MM-DD) dari transaksi yang ingin dihapus: ")
+
+    if tanggal in data:
+        print(f"Daftar transaksi pada tanggal {tanggal}:")
+        for i, transaksi in enumerate(data[tanggal]):
+            print(f"{i+1}. {transaksi['keterangan']} - {transaksi['jumlah']} - {transaksi['tipe']}")
+
+        index = int(input("nomor transaksi yang ingin dihapus: ")) - 1
+
+        if 0 <= index < len(data[tanggal]):
+            del data[tanggal][index]
+            if not data[tanggal]:
+                del data[tanggal]
+
+            save_data(data)
+            print("Transaksi berhasil dihapus!")
+        else:
+            print("Nomor transaksi tidak valid.")
+    else:
+        print("Tidak ada transaksi pada tanggal tersebut.")
+
+def show_data(data):
+    if not data:
+        print("Tidak ada data keuangan.")
+    else:
+        for tanggal, transaksi_list in data.items():
+            print(f"\nTanggal: {tanggal}")
+            for transaksi in transaksi_list:
+                print(f"  - {transaksi['keterangan']} | {transaksi['jumlah']} | {transaksi['tipe']}")
+    print()
+
+def main_menu():
+    data = load_data()
+
+    while True:
+        print("\nMenu Keuangan:")
+        print("1. Tambah Transaksi")
+        print("2. Hapus Transaksi")
+        print("3. Tampilkan Data Keuangan")
+        print("4. Keluar")
+
+        pilihan = input("Pilih menu (1-4): ")
+
+        if pilihan == '1':
+            add_transaction(data)
+        elif pilihan == '2':
+            delete_transaction(data)
+        elif pilihan == '3':
+            show_data(data)
+        elif pilihan == '4':
+            print("Terima kasih telah menggunakan program ini.")
+            break
+        else:
+            print("Pilihan tidak valid. Silakan coba lagi.")
+
+if __name__ == "__main__":
+    main_menu()
+    
