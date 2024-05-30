@@ -1,0 +1,83 @@
+import turtle as t
+
+def draw_rectangle(color, width, height):
+    t.color(color)
+    t.begin_fill()
+    for _ in range(2):
+        t.forward(width)
+        t.left(90)
+        t.forward(height)
+        t.left(90)
+    t.end_fill()
+
+def draw_candle(x, y):
+    t.penup()
+    t.goto(x, y)
+    t.pendown()
+    t.color("yellow")
+    t.begin_fill()
+    t.forward(10)
+    t.left(90)
+    t.forward(40)
+    t.left(90)
+    t.forward(10)
+    t.left(90)
+    t.forward(40)
+    t.left(90)
+    t.end_fill()
+    t.left(90)
+    t.forward(40)
+    t.color("red")
+    t.begin_fill()
+    t.circle(5)
+    t.end_fill()
+    t.right(90)
+
+def draw_cake():
+    t.penup()
+    t.goto(-100, -50)
+    t.pendown()
+    draw_rectangle("chocolate", 200, 50)
+
+    t.penup()
+    t.goto(-100, 0)
+    t.pendown()
+    draw_rectangle("pink", 200, 20)
+    
+    t.penup()
+    t.goto(-80, 20)
+    t.pendown()
+    draw_rectangle("sandy brown", 160, 40)
+
+    t.penup()
+    t.goto(-80, 60)
+    t.pendown()
+    draw_rectangle("light pink", 160, 20)
+
+    t.penup()
+    t.goto(-60, 80)
+    t.pendown()
+    draw_rectangle("peru", 120, 30)
+
+    t.penup()
+    t.goto(-60, 110)
+    t.pendown()
+    draw_rectangle("light coral", 120, 20)
+
+    draw_candle(0, 130)
+
+def write_text():
+    t.penup()
+    t.goto(-130, 150)
+    t.color("blue")
+    t.pendown()
+
+def setup_turtle():
+    t.speed(2)
+    t.bgcolor("light blue")
+
+setup_turtle()
+draw_cake()
+write_text()
+
+t.done()
